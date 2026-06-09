@@ -1,0 +1,28 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    volumes:
+      # ソースコードをマウント（ホットリロード有効）
+      - .:/workspace
+      # node_modules はコンテナ側を優先（ホストと混在させない）
+      - /workspace/node_modules
+    ports:
+      - "6006:6006"   # Storybook
+      - "51204:51204" # Vitest UI
+    environment:
+      - NODE_ENV=development
+      - TESTSITE_URL=http://testsite:8080
+    depends_on:
+      - testsite
+    working_dir: /workspace
+    command: pnpm install --frozen-lockfile && pnpm dev
+
+  testsite:
+    image: nginx:alpine
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./fixtures:/usr/share/nginx/html:ro
+    ports:
+      - "8080:8080"
