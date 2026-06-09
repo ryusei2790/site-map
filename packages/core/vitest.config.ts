@@ -2,8 +2,9 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    // happy-dom: DOM API（DOMParser・fetch）をエミュレート
-    environment: 'happy-dom',
+    // node: treeBuilder / pathUtils など DOM 不要なロジックのテスト用
+    // CrawlAdapter / LocalStorageCache のテスト追加時に happy-dom へ切り替える
+    environment: 'node',
     coverage: {
       reporter: ['text', 'lcov'],
     },
