@@ -11,6 +11,10 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./worker": {
+      "types": "./dist/worker/client.d.ts",
+      "import": "./dist/worker/client.js"
     }
   },
   "files": ["dist"],
@@ -24,7 +28,9 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "fast-xml-parser": "^4.4.0"
+    "fast-xml-parser": "^4.4.0",
+    "idb": "^8.0.0",
+    "comlink": "^4.4.1"
   },
   "devDependencies": {
     "tsup": "^8.0.0",

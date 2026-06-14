@@ -20,7 +20,11 @@ export { StaticAdapter } from './adapters/static.js';
 // --- Cache インターフェース（外部から差し替えられるよう公開） ---
 export type { CacheLayer } from './cache/index.js';
 export { LocalStorageCache } from './cache/localStorage.js';
+export { IndexedDBCache } from './cache/indexedDB.js';
 
 // --- Builder（SSG 連携等の上級用途向けに公開） ---
 export { buildTree } from './builders/treeBuilder.js';
 export { normalizePath, getPathSegments } from './builders/pathUtils.js';
+
+// --- Worker クライアント型（import.meta.url を使うため実装は dist/worker/client.js を直接 import すること）---
+export type { WorkerApi } from './worker/api.js';
