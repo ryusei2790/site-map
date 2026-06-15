@@ -1,6 +1,6 @@
 {
   "name": "@site-map/core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Framework-agnostic core logic for site-map plugin",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -17,7 +17,9 @@
       "import": "./dist/worker/client.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
